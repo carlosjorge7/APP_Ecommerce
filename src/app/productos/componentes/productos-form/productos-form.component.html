@@ -1,1 +1,35 @@
-<p>productos-form works!</p>
+<br>
+<div class="col-md-4 offset-md-4">
+    <div class="card">
+        <h3 style="text-align: center;">{{ isUpdate ? 'Actualizar' : 'Nuevo'}}</h3>
+        <div class="card-body">
+            <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="form-group">
+                    <input name="sku" type="text" [(ngModel)]="producto.sku" placeholder="Sku" class="form-control" autofocus/>
+                </div> <br>
+                <div class="form-group">
+                    <input type="text" name="nombre" [(ngModel)]="producto.nombre" placeholder="Nombre" class="form-control">
+                </div> <br>
+                <br>
+                <div class="form-group">
+                    <input name="descripcion" [(ngModel)]="producto.descripcion" placeholder="Descripcion" class="form-control" />
+                </div>
+                <br>
+                <div class="form-group">
+                    <input name="precio" type="number" [(ngModel)]="producto.precio" placeholder="Precio" class="form-control" />
+                </div>
+                <br>
+                <div class="form-group">
+                    <input name="stock" type="number" [(ngModel)]="producto.stock" placeholder="Stock" class="form-control" />
+                </div>
+
+                <!-- <input type="file" class="d-none" (change)="onProductoSelected($event)" #productoInput>
+                <img [src]="productoSelected || 'assets/image.png'" class="img-fluid" width="200" (click)="productoInput.click()" style="margin-left: 120px;"> -->
+
+                <div style="text-align:center">
+                    <button class="btn btn-success" type="submit">{{ isUpdate ? 'Actualizar' : 'Guardar'}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

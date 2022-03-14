@@ -29,5 +29,9 @@ export class ProductosListComponent implements OnInit {
     })
   }
 
+  public selectedProducto(idProducto: any) {
+    console.log(idProducto)
+  }
+
 
 }

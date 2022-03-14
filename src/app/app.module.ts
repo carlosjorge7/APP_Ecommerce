@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { UsuariosFormComponent } from './usuarios/componentes/usuarios-form/usuarios-form.component';
 import { ProductosFormComponent } from './productos/componentes/productos-form/productos-form.component';
 import { HttpClientModule} from '@angular/common/http';
+import { NavbarComponent } from './componentes/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuariosFormComponent,
-    ProductosFormComponent
+    ProductosFormComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
