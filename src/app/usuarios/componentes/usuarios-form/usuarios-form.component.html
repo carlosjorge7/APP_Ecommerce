@@ -1,1 +1,20 @@
-<p>usuarios-form works!</p>
+<br>
+<div class="col-md-4 offset-md-4">
+    <div class="card">
+        <h3 style="text-align: center;">Welcome</h3>
+        <div class="card-body">
+            <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="form-group">
+                    <input required type="text" name="email" [(ngModel)]="usuario.email" placeholder="Email" class="form-control" autofocus>
+                </div> <br>
+                <div class="form-group">
+                    <input name="contrasena" [(ngModel)]="usuario.contrasena" placeholder="Contraseña" rows="2" class="form-control" />
+                </div>
+                <br>
+                <div style="text-align:center">
+                    <button class="btn btn-success" type="submit">{{ registro ? 'Registrar' : 'Entrar'}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
