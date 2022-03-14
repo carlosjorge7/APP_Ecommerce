@@ -8,11 +8,22 @@ import { Observable } from 'rxjs';
 })
 export class UsuariosService {
 
-  private API = 'http://localhost:7777/api/usuarios/';
+  private API = 'http://localhost:7777/api/usuarios';
 
   constructor(public http: HttpClient) { }
 
-  login(usuario: Usuario): Observable<Usuario> {
+  public login(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${this.API}/login`, usuario);
+  }
+
+  public registro(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.API}/registro`, usuario);
+  }
+  
+  public estaLoggeado(): boolean {
+    if(localStorage.getItem('token')) {
+      return true;
+    }
+    return false;
   }
 }

@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Usuario } from '../../modelos/Usuario';
 import { UsuariosService } from '../../servicios/usuarios.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuarios-form',
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class UsuariosFormComponent implements OnInit {
 
-  registro: boolean = false;
+  isRegistro: boolean = false;
   
   usuario: Usuario = {
     idUsuario: 0,
@@ -21,15 +21,29 @@ export class UsuariosFormComponent implements OnInit {
   }
 
   constructor(private usuariosService: UsuariosService,
-              private router: Router) { }
+              private router: Router,
+              private activedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const reg = this.activedRoute.snapshot.params;
+    // console.log(reg);
+    if(reg['registro'] === 'registro') {
+      this.isRegistro = true;
+    }
   }
 
   public onSubmit(form: NgForm) {
     let usuario: Usuario = form.value;
 
-    this.usuariosService.login(usuario).subscribe({
+    let tipoOperacion: any;
+    if(this.isRegistro) {
+      tipoOperacion = this.usuariosService.registro(usuario);
+    }
+    else{
+      tipoOperacion = this.usuariosService.login(usuario);
+    }
+
+    tipoOperacion.subscribe({
       next: (res: any) => { 
         // Seteamos el usuario
         console.log(res);
@@ -57,7 +71,6 @@ export class UsuariosFormComponent implements OnInit {
         });
       }
     })
-
   }
-
+  
 }

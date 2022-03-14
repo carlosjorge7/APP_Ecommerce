@@ -10,9 +10,12 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/usuarios" routerLinkActive="active"> Login</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="/photo-form" routerLinkActive="active"><i class="fas fa-plus-circle"></i> Añadir foto</a>
-        </li> -->
+        <li class="nav-item">
+          <a class="nav-link"  [routerLink]="['/usuarios', 'registro']" routerLinkActive="active">Registro</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" (click)="logout()" routerLinkActive="active"> Salir</a>
+        </li>
       </ul>
     </div>
     </div>

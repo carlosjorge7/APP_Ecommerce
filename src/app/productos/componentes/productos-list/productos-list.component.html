@@ -1,1 +1,20 @@
-<p>productos-list works!</p>
+<div class="col-md-4" *ngFor="let producto of productos">
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+           {{ producto.nombre }}
+           <!-- <button class="btn btn-danger" (click)="deletePhoto(photo.id)">
+                <i class="far fa-trash-alt"></i>
+           </button> -->
+        </div>
+        <img [src]="'http://localhost:7777/' + producto.imagen" class="card-img-top">
+        <div class="card-body">
+            <p>{{ producto.descripcion }}</p>
+            <p>{{ producto.precio | date: 'dd-MM-yyyy'}}</p>
+            <!-- <p>{{ producto.created_at | date: 'dd-MM-yyyy'}}</p> -->
+            <!-- esta entre corchetes por que recibe un parametro de entrada -->
+            <!-- <a [routerLink]="['/photo', photo.id]" class="btn btn-secondary btn-block">
+                Editar
+            </a> -->
+        </div>
+    </div>
+</div>
