@@ -9,7 +9,7 @@
                 </div> <br>
                 <div class="form-group">
                     <input type="text" name="nombre" [(ngModel)]="producto.nombre" placeholder="Nombre" class="form-control">
-                </div> <br>
+                </div>
                 <br>
                 <div class="form-group">
                     <input name="descripcion" [(ngModel)]="producto.descripcion" placeholder="Descripcion" class="form-control" />
@@ -23,9 +23,13 @@
                     <input name="stock" type="number" [(ngModel)]="producto.stock" placeholder="Stock" class="form-control" />
                 </div>
 
-                <!-- <input type="file" class="d-none" (change)="onProductoSelected($event)" #productoInput>
-                <img [src]="productoSelected || 'assets/image.png'" class="img-fluid" width="200" (click)="productoInput.click()" style="margin-left: 120px;"> -->
+                <br>
+               <div class="form-group">
+                    <input type="file" class="d-none" (change)="onProductoSelected($event)" #productoInput>
+                    <img [src]="productoSelected || 'assets/image.png'" class="img-fluid" width="200" (click)="productoInput.click()" style="margin-left: 100px;">
+               </div>
 
+               <br>
                 <div style="text-align:center">
                     <button class="btn btn-success" type="submit">{{ isUpdate ? 'Actualizar' : 'Guardar'}}</button>
                 </div>

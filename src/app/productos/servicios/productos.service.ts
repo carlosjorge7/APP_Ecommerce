@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Producto } from '../modelos/Producto';
 
@@ -14,5 +14,20 @@ export class ProductosService {
 
   getProductos(): Observable<Producto[]>{
     return this.http.get<Producto[]>(`${this.API}/productos`);
+  }
+
+  createProducto(sku: string, nombre: string, descripcion: string, precio: number, stock: number, imagen: any): Observable<Producto> {
+    let headers = new HttpHeaders();
+    const token: any = localStorage.getItem('token');
+    headers = headers.set('x-access-token', token);
+
+    const producto = new FormData();
+    producto.append('nombre', nombre);
+    producto.append('descripcion', descripcion);
+    producto.append('precio', precio.toString());
+    producto.append('stock', stock.toString());
+    producto.append('imagen', imagen)
+
+    return this.http.post<Producto>(`${this.API}/productos`, producto, {headers});
   }
 }

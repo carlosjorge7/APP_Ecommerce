@@ -1,6 +1,9 @@
+<button class="btn btn-primary" (click)="nuevo()">
+    Nuevo
+</button>
 <div class="row">
     <div class="col-md-3 p-3" *ngFor="let producto of productos">
-        <div class="card card-photo" (click)="selectedProducto(producto.idProducto)">
+        <div class="card card-photo" [routerLink]="['/productos', producto.idProducto]">
             <div class="card-header">
                 {{ producto.nombre }}
             </div>

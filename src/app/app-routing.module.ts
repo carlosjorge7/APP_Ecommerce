@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { ProductosFormComponent } from './productos/componentes/productos-form/productos-form.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,21 @@ const routes: Routes = [
     path: 'productos',
     loadChildren: () => import('./productos/productos.module').then( m => m.ProductosModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'productos/:idProducto',
+    component: ProductosFormComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'productos-form',
+    component: ProductosFormComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '',
+    redirectTo: 'productos',
+    pathMatch: 'full'
   }
 ];
 

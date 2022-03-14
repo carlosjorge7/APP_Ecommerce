@@ -5,11 +5,7 @@ export interface Producto {
     descripcion: string,
     precio: number,
     stock: number,
-    imagen: string,
+    imagen: string | File,
     createdAt?: Date,
     idCategoria?: number,
-}
-
-export interface HtmlInputEvent extends Event {
-    target: HTMLInputElement & EventTarget;
 }

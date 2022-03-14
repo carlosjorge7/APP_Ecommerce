@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../modelos/Producto';
 import { ProductosService } from '../../servicios/productos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-productos-list',
@@ -11,7 +12,8 @@ export class ProductosListComponent implements OnInit {
 
   productos: Producto[] = [];
 
-  constructor(private productosService: ProductosService) { }
+  constructor(private productosService: ProductosService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.listar();
@@ -27,6 +29,10 @@ export class ProductosListComponent implements OnInit {
 
       }
     })
+  }
+
+  public nuevo() {
+    this.router.navigate(['/productos-form']);
   }
 
   public selectedProducto(idProducto: any) {
