@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../modelos/Producto';
 import { ProductosService } from '../../servicios/productos.service';
 import { Router } from '@angular/router';
+import { UsuariosService } from 'src/app/usuarios/servicios/usuarios.service';
 
 @Component({
   selector: 'app-productos-list',
@@ -10,13 +11,19 @@ import { Router } from '@angular/router';
 })
 export class ProductosListComponent implements OnInit {
 
+  esAdmin: boolean = false;
+
   productos: Producto[] = [];
 
   constructor(private productosService: ProductosService,
-              private router: Router) { }
+              private router: Router) {}
 
   ngOnInit(): void {
     this.listar();
+    // Si es admin o cliente
+    if(localStorage.getItem('auth') === 'true') {
+      this.esAdmin = true;
+    }
   }
 
   public listar() {

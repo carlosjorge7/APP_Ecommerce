@@ -1,7 +1,10 @@
 <br>
+<button class="btn btn-primary" routerLink="/productos">
+    Volver
+</button>
 <div class="col-md-4 offset-md-4">
     <div class="card">
-        <h3 style="text-align: center;">{{ isUpdate ? 'Actualizar' : 'Nuevo'}}</h3>
+        <h3 style="text-align: center;">Nuevo</h3>
         <div class="card-body">
             <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
                 <div class="form-group">
@@ -31,7 +34,7 @@
 
                <br>
                 <div style="text-align:center">
-                    <button class="btn btn-success" type="submit">{{ isUpdate ? 'Actualizar' : 'Guardar'}}</button>
+                    <button class="btn btn-success" type="submit">Guardar</button>
                 </div>
             </form>
         </div>

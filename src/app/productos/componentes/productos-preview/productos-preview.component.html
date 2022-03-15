@@ -1,0 +1,36 @@
+<br>
+<button class="btn btn-primary" routerLink="/productos">
+    Volver
+</button>
+
+<div class="row" *ngIf="!producto; else main_content">
+    <h1>Loading ... </h1>
+</div>
+
+<ng-template #main_content>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <img [src]="'http://localhost:7777/' + producto.imagen" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card card-photo">
+                <div class="card-header">
+                    {{ producto.nombre }}
+                </div>
+                <div class="card-body">
+                    Descripcion: {{ producto.descripcion }} <br>
+                    Precio: {{ producto.precio }} $
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-primary">
+                Añadir a la cesta
+            </button>
+            <button class="btn btn-danger" >
+                Eliminar
+            </button>
+        </div>
+    </div>   
+</ng-template>

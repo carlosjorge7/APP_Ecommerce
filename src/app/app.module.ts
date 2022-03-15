@@ -7,13 +7,15 @@ import { UsuariosFormComponent } from './usuarios/componentes/usuarios-form/usua
 import { ProductosFormComponent } from './productos/componentes/productos-form/productos-form.component';
 import { HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuariosFormComponent,
     ProductosFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

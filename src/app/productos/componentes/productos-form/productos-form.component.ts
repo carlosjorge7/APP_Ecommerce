@@ -12,8 +12,6 @@ import { ProductosService } from '../../servicios/productos.service';
 })
 export class ProductosFormComponent implements OnInit {
 
-  isUpdate: boolean = false;
-
   // Imagen
   file: File | undefined;
   productoSelected: any;

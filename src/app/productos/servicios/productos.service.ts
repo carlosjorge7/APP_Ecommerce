@@ -22,6 +22,7 @@ export class ProductosService {
     headers = headers.set('x-access-token', token);
 
     const producto = new FormData();
+    producto.append('sku', sku);
     producto.append('nombre', nombre);
     producto.append('descripcion', descripcion);
     producto.append('precio', precio.toString());
@@ -29,5 +30,9 @@ export class ProductosService {
     producto.append('imagen', imagen)
 
     return this.http.post<Producto>(`${this.API}/productos`, producto, {headers});
+  }
+
+  getProducto(idProducto: string | number): Observable<Producto>{
+    return this.http.get<Producto>(`${this.API}/productos/${idProducto}`)
   }
 }

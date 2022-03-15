@@ -25,8 +25,8 @@ export class UsuariosFormComponent implements OnInit {
               private activedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    // Para el registro
     const reg = this.activedRoute.snapshot.params;
-    // console.log(reg);
     if(reg['registro'] === 'registro') {
       this.isRegistro = true;
     }
@@ -47,6 +47,7 @@ export class UsuariosFormComponent implements OnInit {
       next: (res: any) => { 
         // Seteamos el usuario
         console.log(res);
+        localStorage.setItem('auth', res.auth);
         localStorage.setItem('token', res.token);
         localStorage.setItem('idUsuario', res.idUsuario);
         // Alerta
@@ -59,6 +60,7 @@ export class UsuariosFormComponent implements OnInit {
         });
         // Navegamos a la pagina principal
         this.router.navigate(['/productos']); 
+        // window.location.reload();
       },
       error: () => { 
          // Alerta
