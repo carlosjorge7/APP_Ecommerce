@@ -28,7 +28,7 @@
             <button class="btn btn-primary">
                 Añadir a la cesta
             </button>
-            <button class="btn btn-danger" >
+            <button *ngIf="esAdmin" class="btn btn-danger" (click)="borrarProducto()">
                 Eliminar
             </button>
         </div>

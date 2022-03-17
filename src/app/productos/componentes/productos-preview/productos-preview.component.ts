@@ -10,6 +10,8 @@ import { ProductosService } from '../../servicios/productos.service';
 })
 export class ProductosPreviewComponent implements OnInit {
 
+  esAdmin: boolean = false;
+
   idProducto: string = '';
   
   producto: Producto = {
@@ -37,6 +39,25 @@ export class ProductosPreviewComponent implements OnInit {
           console.log(this.producto)
       });
     });
+
+    // Comprobamos si es admin
+    if(localStorage.getItem('auth') === 'true') {
+      this.esAdmin = true;
+      console.log(this.esAdmin);
+    }
+  }
+
+  public borrarProducto () {
+    // Borramos producto
+    if(this.esAdmin) {
+      this.productosService.deleteProducto(this.idProducto)
+        .subscribe(res => {
+          console.log(res);
+        });
+      this.router.navigate(['/productos']);
+    }
+
+    
   }
 
 }

@@ -33,6 +33,13 @@ export class ProductosService {
   }
 
   getProducto(idProducto: string | number): Observable<Producto>{
-    return this.http.get<Producto>(`${this.API}/productos/${idProducto}`)
+    return this.http.get<Producto>(`${this.API}/productos/${idProducto}`);
+  }
+
+  deleteProducto(idProducto: string | number): Observable<Producto>{
+    let headers = new HttpHeaders();
+    const token: any = localStorage.getItem('token');
+    headers = headers.set('x-access-token', token);
+    return this.http.delete<Producto>(`${this.API}/productos/${idProducto}`, {headers});
   }
 }
