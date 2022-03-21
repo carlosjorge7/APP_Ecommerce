@@ -1,6 +1,9 @@
-<button *ngIf="esAdmin" class="btn btn-primary" (click)="nuevo()">
-    Nuevo
-</button>
+<div style="display: inline-flex;">
+    <h3>Productos</h3>
+    <button style="margin-left: 800px;" *ngIf="esAdmin" class="btn btn-sm btn-primary" (click)="nuevo()" >
+        Nuevo
+    </button>
+</div>
 <div class="row">
     <div class="col-md-3 p-3" *ngFor="let producto of productos">
         <div class="card card-photo" [routerLink]="['/productos', producto.idProducto]">

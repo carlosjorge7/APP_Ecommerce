@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router'
+import { UsuariosService } from 'src/app/usuarios/servicios/usuarios.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,13 @@ import { Router } from '@angular/router'
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  logged: boolean = false;
+
+  constructor(private router: Router,
+              private usuariosService: UsuariosService) {}
 
   ngOnInit(): void {
+    this.logged = this.usuariosService.estaLoggeado();
   }
 
   public logout() {
@@ -30,6 +35,8 @@ export class NavbarComponent implements OnInit {
           window.location.reload();
         }
         });
-      }
+       // window.location.reload();
+  }
+      
 
 }

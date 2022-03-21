@@ -8,6 +8,7 @@ import { ProductosFormComponent } from './productos/componentes/productos-form/p
 import { HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { SidebarComponent } from './componentes/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
     UsuariosFormComponent,
     ProductosFormComponent,
     NavbarComponent,
-    InicioComponent
+    InicioComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
