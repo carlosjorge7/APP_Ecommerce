@@ -1,10 +1,4 @@
-<div style="display: inline-flex;">
-    <h3>Productos</h3>
-    <button style="margin-left: 800px;" *ngIf="esAdmin" class="btn btn-sm btn-primary" (click)="nuevo()" >
-        Nuevo
-    </button>
-</div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-3 p-3" *ngFor="let producto of productos">
         <div class="card card-photo" [routerLink]="['/productos', producto.idProducto]">
             <div class="card-header">
@@ -17,4 +11,43 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<h3>Productos</h3>
+<div class="col-md-12">
+    <button *ngIf="esAdmin" class="btn btn-primary" (click)="nuevo()" >
+        Nuevo
+    </button>
+    <table class="table table-striped">
+      <thead>
+        <th>Foto</th>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Sku</th>
+        <th>Descrip</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Creacion</th>
+        <th>Categoria</th>
+        <th>Detalle</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos">
+        <td> <img [src]="'http://localhost:7777/' + producto.imagen" width="10%" height="10%"></td>
+          <td>{{ producto.idProducto }}</td>
+          <td> {{ producto.nombre }}</td>
+          <td> {{ producto.sku }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.precio }}</td>
+          <td>{{ producto.stock }}</td>
+          <td>{{ producto.createdAt }}</td>
+          <td>{{ producto.idCategoria }}</td>
+          <td>
+             <button  [routerLink]="['/productos', producto.idProducto]" class="btn btn-primary btn-sm">
+                <i class="far fa-edit"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+   
+  </div>
