@@ -59,8 +59,9 @@ export class UsuariosFormComponent implements OnInit {
           timer: 1500
         });
         // Navegamos a la pagina principal
-        this.router.navigate(['/productos']); 
+        this.router.navigate(['/productos']);
         // window.location.reload();
+        this.delay();
       },
       error: () => { 
          // Alerta
@@ -72,7 +73,12 @@ export class UsuariosFormComponent implements OnInit {
           timer: 1500
         });
       }
-    })
+    });
   }
   
+  private delay(): void {
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  }
 }
