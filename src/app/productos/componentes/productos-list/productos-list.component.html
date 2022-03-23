@@ -45,6 +45,9 @@
              <button  [routerLink]="['/productos', producto.idProducto]" class="btn btn-primary btn-sm">
                 <i class="far fa-edit"></i>
             </button>
+            <button class="btn btn-danger btn-sm" (click)="borrarProducto(producto.idProducto)">
+              <i class="far fa-trash-alt"></i>
+         </button>
           </td>
         </tr>
       </tbody>

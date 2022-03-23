@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 import { Producto } from '../../modelos/Producto';
 import { ProductosService } from '../../servicios/productos.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos-form',
@@ -15,6 +15,8 @@ export class ProductosFormComponent implements OnInit {
   // Imagen
   file: File | undefined;
   productoSelected: any;
+
+  update: boolean = false;
 
   producto: Producto = {
     idProducto: 0,
@@ -28,9 +30,24 @@ export class ProductosFormComponent implements OnInit {
   }
 
   constructor(private productosService: ProductosService,
+              private activedRoute: ActivatedRoute,
               private router: Router) { }
 
+  idProducto: number = 0;
+
   ngOnInit(): void {
+    const params = this.activedRoute.snapshot.params;
+    this.idProducto = params['idProducto'];
+    console.log(this.idProducto);
+    if(this.idProducto) {
+      // Llamamos al servicio de obtener producto
+      this.productosService.getProducto(this.idProducto)
+        .subscribe(res => {
+          this.producto = res;
+          this.update = true;
+          console.log(this.producto)
+      });
+    }
   }
 
   fileToUpload: File | null = null;
@@ -48,11 +65,26 @@ export class ProductosFormComponent implements OnInit {
 
   public onSubmit(form: NgForm) {
     let producto: Producto = form.value;
-    console.log(producto)
+    console.log(producto);
+
+    let tipoOperacion: any;
+    if(this.update) {
+      tipoOperacion = this.productosService.updateProducto(this.idProducto, producto);
+    }
+    else{
+      tipoOperacion = this.productosService.createProducto(producto.sku, producto.nombre, producto.descripcion, producto.precio, producto.stock, this.file);
+    }
     
-    this.productosService.createProducto(producto.sku, producto.nombre, producto.descripcion, producto.precio, producto.stock, this.file)
-      .subscribe(res => {
+    tipoOperacion.subscribe((res: any) => {
         console.log(res);
+         // Alerta
+         Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: res.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.router.navigate(['/productos']);
     });
   }

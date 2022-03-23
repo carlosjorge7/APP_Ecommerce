@@ -42,4 +42,11 @@ export class ProductosService {
     headers = headers.set('x-access-token', token);
     return this.http.delete<Producto>(`${this.API}/productos/${idProducto}`, {headers});
   }
+
+  updateProducto(idProducto: string | number, producto: Producto) {
+    let headers = new HttpHeaders();
+    const token: any = localStorage.getItem('token');
+    headers = headers.set('x-access-token', token);
+    return this.http.put<Producto>(`${this.API}/productos/${idProducto}`, producto,  {headers});
+  }
 }

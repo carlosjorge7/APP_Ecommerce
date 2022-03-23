@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../modelos/Producto';
 import { ProductosService } from '../../servicios/productos.service';
 import { Router } from '@angular/router';
-import { UsuariosService } from 'src/app/usuarios/servicios/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos-list',
@@ -42,9 +42,40 @@ export class ProductosListComponent implements OnInit {
     this.router.navigate(['/productos-form']);
   }
 
-  public selectedProducto(idProducto: any) {
-    console.log(idProducto)
+  public borrarProducto (idProducto: any) {
+    Swal.fire({
+      title: '¿Borrar producto?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, salir!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Borramos producto
+          this.productosService.deleteProducto(idProducto)
+            .subscribe((res: any) => {
+            console.log(res);
+            // Alerta
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: res.message,
+              showConfirmButton: false,
+              timer: 1500
+            });
+            this.listar();
+          });    
+        }
+      });
   }
+
+  private delay(): void {
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  }
+
 
 
 }

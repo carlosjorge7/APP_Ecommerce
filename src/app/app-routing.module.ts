@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { ProductosFormComponent } from './productos/componentes/productos-form/productos-form.component';
-import { ProductosPreviewComponent } from './productos/componentes/productos-preview/productos-preview.component';
 
 const routes: Routes = [
   {
@@ -20,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'productos/:idProducto',
-    component: ProductosPreviewComponent,
+    component: ProductosFormComponent,
     canActivate: [AuthGuard]
   },
   {
