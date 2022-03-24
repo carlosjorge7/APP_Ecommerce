@@ -3,6 +3,7 @@ import { Producto } from '../../modelos/Producto';
 import { ProductosService } from '../../servicios/productos.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-productos-list',
@@ -11,19 +12,15 @@ import Swal from 'sweetalert2';
 })
 export class ProductosListComponent implements OnInit {
 
-  esAdmin: boolean = false;
-
   productos: Producto[] = [];
+
+  textoBuscar: string = '';
 
   constructor(private productosService: ProductosService,
               private router: Router) {}
 
   ngOnInit(): void {
     this.listar();
-    // Si es admin o cliente
-    if(localStorage.getItem('auth') === 'true') {
-      this.esAdmin = true;
-    }
   }
 
   public listar() {
@@ -70,12 +67,13 @@ export class ProductosListComponent implements OnInit {
       });
   }
 
-  private delay(): void {
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+ 
+  public buscarProducto(e: any) {
+    const valor = e.target.value;
+    this.textoBuscar = valor;
+    return false;
   }
-
+ 
 
 
 }
