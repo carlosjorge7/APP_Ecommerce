@@ -23,6 +23,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'categorias',
+    loadChildren: () => import('./categorias/categorias.module').then( m => m.CategoriasModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'productos-form',
     component: ProductosFormComponent,
     canActivate: [AuthGuard]
