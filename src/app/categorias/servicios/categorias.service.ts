@@ -37,7 +37,7 @@ export class CategoriasService {
     let headers = new HttpHeaders();
     const token: any = localStorage.getItem('token');
     headers = headers.set('x-access-token', token);
-    return this.http.delete<Categoria>(`${this.API}/categoria/${idCategoria}`, {headers});
+    return this.http.delete<Categoria>(`${this.API}/categorias/${idCategoria}`, {headers});
   }
 
   updateCategoria(idCategoria: string | number, categoria: Categoria) {

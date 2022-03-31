@@ -1,1 +1,25 @@
-<p>categorias-form works!</p>
+<br>
+<button class="btn btn-primary btn-sm" routerLink="/categorias">
+    <i class="fa-solid fa-arrow-left"></i>
+</button>
+
+<div class="col-md-4 offset-md-4">
+    <div class="card">
+        <h3 style="text-align: center;">{{ update ? 'Editar' : 'Nuevo'}}</h3>
+        <div class="card-body">
+            <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="form-group">
+                    <input name="nombre" type="text" [(ngModel)]="categoria.nombre" placeholder="Nombre" class="form-control" autofocus/>
+                </div> 
+                <br>
+                <div class="form-group">
+                    <input type="text" name="descripcion" [(ngModel)]="categoria.descripcion" placeholder="Descripción" class="form-control">
+                </div>
+                <br>
+                <div style="text-align:center">
+                    <button class="btn btn-success btn-sm" type="submit"> {{ update ? 'Actualizar' : 'Guardar'}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

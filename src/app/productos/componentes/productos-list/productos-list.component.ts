@@ -34,10 +34,6 @@ export class ProductosListComponent implements OnInit {
     })
   }
 
-  public nuevo() {
-    this.router.navigate(['/productos-form']);
-  }
-
   public borrarProducto (idProducto: any) {
     Swal.fire({
       title: '¿Borrar producto?',
@@ -65,14 +61,5 @@ export class ProductosListComponent implements OnInit {
         }
       });
   }
-
- 
-  public buscarProducto(e: any) {
-    const valor = e.target.value;
-    this.textoBuscar = valor;
-    return false;
-  }
- 
-
 
 }

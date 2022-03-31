@@ -4,19 +4,19 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li *ngIf="logged" class="nav-item active">
-              <a class="nav-link" routerLink="/categorias"> Categorias</a>
+              <a class="nav-link" routerLink="/productos"><i class="fa-solid fa-store"></i> Productos</a>
             </li>
             <li *ngIf="logged" class="nav-item active">
-              <a class="nav-link" routerLink="/productos"> Productos</a>
+              <a class="nav-link" routerLink="/categorias"><i class="fas fa-list"></i> Categorias</a>
             </li>
             <li *ngIf="!logged" class="nav-item active">
-              <a class="nav-link" routerLink="/usuarios"> Login</a>
+              <a class="nav-link" routerLink="/usuarios"><i class="fa-solid fa-user"></i> Login</a>
             </li>
             <li *ngIf="!logged" class="nav-item active">
-              <a class="nav-link"  [routerLink]="['/usuarios', 'registro']">Registro</a>
+              <a class="nav-link"  [routerLink]="['/usuarios', 'registro']"><i class="fa-solid fa-user"></i> Registro</a>
             </li>
             <li *ngIf="logged" class="nav-item active">
-              <a class="nav-link" (click)="logout()"> Salir</a>
+              <a class="nav-link" (click)="logout()"><i class="fa-solid fa-user"></i> Salir</a>
             </li>
           </ul>
         </div>

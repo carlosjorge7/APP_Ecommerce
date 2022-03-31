@@ -1,5 +1,5 @@
 <br>
-<button class="btn btn-primary" routerLink="/productos">
+<button class="btn btn-primary btn-sm" routerLink="/productos">
     <i class="fa-solid fa-arrow-left"></i>
 </button>
 
@@ -8,7 +8,6 @@
         <h3 style="text-align: center;">{{ update ? 'Editar' : 'Nuevo'}}</h3>
         <div class="card-body">
             <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
-            <!-- <form> -->
                 <div class="form-group">
                     <input name="sku" type="text" [(ngModel)]="producto.sku" placeholder="Sku" class="form-control" autofocus/>
                 </div> <br>
@@ -36,10 +35,7 @@
 
                <br>
                 <div style="text-align:center">
-                    <button class="btn btn-success" type="submit"> {{ update ? 'Actualizar' : 'Guardar'}}</button>
-                    <!-- <button class="btn btn-success" (click)="update ? updatePhoto() : createPhoto()">
-                        {{ update ? 'Actualizar' : 'Guardar'}}
-                    </button> -->
+                    <button class="btn btn-success btn-sm" type="submit"> {{ update ? 'Actualizar' : 'Guardar'}}</button>
                 </div>
             </form>
         </div>
