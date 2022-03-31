@@ -1,12 +1,9 @@
 <div class="container">
   <div style="float: right;">
-    <input class="form-control" name="busqueda" type="text" placeholder="Buscar (Pressiona enter)" (change)="buscarProducto($event)"/>
+    <input class="form-control" name="busqueda" type="text" placeholder="Buscar" name="textoBuscar" [(ngModel)]="textoBuscar"/>
   </div>
   <div style="float:left">
     <h3>Listado de productos</h3>
-      <!-- <button style="display: block;"  class="btn btn-secondary btn-sm">
-        Buscar
-      </button> -->
   </div>
   <div style="float: right; margin-right: 20px; margin-bottom: 40px;" class="row">
     <button class="btn btn-primary btn-sm" (click)="nuevo()" >

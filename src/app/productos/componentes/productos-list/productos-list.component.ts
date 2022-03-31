@@ -3,7 +3,6 @@ import { Producto } from '../../modelos/Producto';
 import { ProductosService } from '../../servicios/productos.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-productos-list',

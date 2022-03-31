@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductosRoutingModule } from './productos-routing.module';
 import { ProductosListComponent } from './componentes/productos-list/productos-list.component';
 import { PipesModule } from '../filtros/pipes.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { PipesModule } from '../filtros/pipes.module';
   imports: [
     CommonModule,
     ProductosRoutingModule, 
-    PipesModule
+    PipesModule,
+    FormsModule
   ]
 })
 export class ProductosModule { }
