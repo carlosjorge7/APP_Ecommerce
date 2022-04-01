@@ -4,6 +4,8 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { Producto } from '../../modelos/Producto';
 import { ProductosService } from '../../servicios/productos.service';
 import Swal from 'sweetalert2';
+import { CategoriasService } from 'src/app/categorias/servicios/categorias.service';
+import { Categoria } from 'src/app/categorias/modelos/Categoria';
 
 @Component({
   selector: 'app-productos-form',
@@ -30,10 +32,14 @@ export class ProductosFormComponent implements OnInit {
   }
 
   constructor(private productosService: ProductosService,
+              private categoriasService: CategoriasService,
               private activedRoute: ActivatedRoute,
               private router: Router) { }
 
   idProducto: number = 0;
+
+  // Combo
+  categorias: Categoria[] = [];
 
   ngOnInit(): void {
     const params = this.activedRoute.snapshot.params;
@@ -48,6 +54,17 @@ export class ProductosFormComponent implements OnInit {
           console.log(this.producto)
       });
     }
+
+    // carga el combo
+    this.categoriasService.getCategorias().subscribe((res: Categoria[]) => {
+      this.categorias = res;
+    });
+  }
+
+  selectCategoria(ev: any){
+    let e = ev.target.value;
+    this.producto.idCategoria = Number(e);
+    console.log(this.producto.idCategoria);
   }
 
   fileToUpload: File | null = null;
@@ -72,7 +89,7 @@ export class ProductosFormComponent implements OnInit {
       tipoOperacion = this.productosService.updateProducto(this.idProducto, producto);
     }
     else{
-      tipoOperacion = this.productosService.createProducto(producto.sku, producto.nombre, producto.descripcion, producto.precio, producto.stock, this.file);
+      tipoOperacion = this.productosService.createProducto(producto.sku, producto.nombre, producto.descripcion, producto.precio, producto.stock, producto.idCategoria, this.file);
     }
     
     tipoOperacion.subscribe((res: any) => {

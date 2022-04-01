@@ -16,7 +16,7 @@ export class ProductosService {
     return this.http.get<Producto[]>(`${this.API}/productos`);
   }
 
-  createProducto(sku: string, nombre: string, descripcion: string, precio: number, stock: number, imagen: any): Observable<Producto> {
+  createProducto(sku: string, nombre: string, descripcion: string, precio: number, stock: number, idCategoria:any, imagen: any): Observable<Producto> {
     let headers = new HttpHeaders();
     const token: any = localStorage.getItem('token');
     headers = headers.set('x-access-token', token);
@@ -27,6 +27,7 @@ export class ProductosService {
     producto.append('descripcion', descripcion);
     producto.append('precio', precio.toString());
     producto.append('stock', stock.toString());
+    producto.append('idCategoria', idCategoria.toString());
     producto.append('imagen', imagen)
 
     return this.http.post<Producto>(`${this.API}/productos`, producto, {headers});
@@ -49,4 +50,5 @@ export class ProductosService {
     headers = headers.set('x-access-token', token);
     return this.http.put<Producto>(`${this.API}/productos/${idProducto}`, producto,  {headers});
   }
+
 }

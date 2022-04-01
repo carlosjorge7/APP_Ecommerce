@@ -8,27 +8,39 @@
         <h3 style="text-align: center;">{{ update ? 'Editar' : 'Nuevo'}}</h3>
         <div class="card-body">
             <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <label for="">Sku</label>
                 <div class="form-group">
-                    <input name="sku" type="text" [(ngModel)]="producto.sku" placeholder="Sku" class="form-control" autofocus/>
+                    <input name="sku" type="text" [(ngModel)]="producto.sku" class="form-control" autofocus/>
                 </div> <br>
                 <div class="form-group">
-                    <input type="text" name="nombre" [(ngModel)]="producto.nombre" placeholder="Nombre" class="form-control">
+                    <label for="">Nombre</label>
+                    <input type="text" name="nombre" [(ngModel)]="producto.nombre" class="form-control">
                 </div>
                 <br>
                 <div class="form-group">
-                    <input name="descripcion" [(ngModel)]="producto.descripcion" placeholder="Descripcion" class="form-control" />
+                    <label for="">Descripción</label>
+                    <input name="descripcion" [(ngModel)]="producto.descripcion" class="form-control" />
                 </div>
                 <br>
                 <div class="form-group">
-                    <input name="precio" type="number" [(ngModel)]="producto.precio" placeholder="Precio" class="form-control" />
+                    <label for="">Precio</label>
+                    <input name="precio" type="number" [(ngModel)]="producto.precio" class="form-control" />
                 </div>
                 <br>
                 <div class="form-group">
-                    <input name="stock" type="number" [(ngModel)]="producto.stock" placeholder="Stock" class="form-control" />
+                    <label for="">Stock</label>
+                    <input name="stock" type="number" [(ngModel)]="producto.stock" class="form-control" />
                 </div>
-
+                <div class="form-group">
+                    <label for="">Categoria</label>
+                    <select class="form-control" (change)="selectCategoria($event)">
+                        <option [defaultSelected]="true" [value]="1">-- Selecciona categoria</option>
+                        <option [(ngModel)]="producto.idCategoria" name="idCategoria" *ngFor="let categoria of categorias" [value]="categoria.idCategoria">{{categoria.nombre}}</option>
+                    </select>
+                </div>
                 <br>
                <div class="form-group">
+                    <label for="">Imagen</label>
                     <input type="file" class="d-none" (change)="onProductoSelected($event)" #productoInput>
                     <img [src]="productoSelected || 'assets/image.png'" class="img-fluid" width="200" (click)="productoInput.click()" style="margin-left: 100px;">
                </div>
