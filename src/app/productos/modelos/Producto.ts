@@ -7,6 +7,6 @@ export interface Producto {
     stock: number,
     imagen: string | File,
     createdAt?: Date,
-    idCategoria?: number,
+    idCategoria?: any,
     nombreCategoria?: string
 }

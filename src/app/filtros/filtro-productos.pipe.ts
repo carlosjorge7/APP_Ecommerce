@@ -15,10 +15,10 @@ export class FiltroProductosPipe implements PipeTransform {
     // tipo foreach --> la funcion filter devuelve al array filtrado
     return productos.filter((producto) => {
       return producto.nombre.toLowerCase().includes(valor)
-            || producto.descripcion.includes(valor) 
+            || producto.descripcion.toLowerCase().includes(valor) 
             || producto.precio.toString().includes(valor)
             || producto.stock.toString().includes(valor)
-            || producto.sku.toString().includes(valor);
+            || producto.sku.toLowerCase().includes(valor);
     });
   }
 

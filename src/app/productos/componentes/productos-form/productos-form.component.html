@@ -35,14 +35,17 @@
                     <label for="">Categoria</label>
                     <select class="form-control" (change)="selectCategoria($event)">
                         <option [defaultSelected]="true" [value]="1">-- Selecciona categoria</option>
-                        <option [(ngModel)]="producto.nombreCategoria" name="idCategoria" *ngFor="let categoria of categorias" [value]="categoria.idCategoria">{{categoria.nombre}}</option>
+                        <option [(ngModel)]="producto.idCategoria" name="idCategoria" *ngFor="let categoria of categorias" [value]="categoria.idCategoria">{{categoria.nombre}}</option>
                     </select>
                 </div>
                 <br>
                <div class="form-group">
-                    <label for="">Imagen</label>
-                    <input type="file" class="d-none" (change)="onProductoSelected($event)" #productoInput>
-                    <img [src]="productoSelected || 'assets/image.png'" class="img-fluid" width="200" (click)="productoInput.click()" style="margin-left: 100px;">
+                    <label for="">Imagen</label> <br>
+                    <img *ngIf="update" [src]="'http://localhost:7777/' + producto.imagen" width="100%" height="30%">
+                    <div *ngIf="!update">
+                        <input type="file" class="d-none" (change)="onProductoSelected($event)" #productoInput>
+                        <img [src]="productoSelected || 'assets/image.png'" class="img-fluid" width="200" (click)="productoInput.click()" style="margin-left: 100px;">
+                    </div>
                </div>
 
                <br>
