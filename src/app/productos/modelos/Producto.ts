@@ -8,4 +8,5 @@ export interface Producto {
     imagen: string | File,
     createdAt?: Date,
     idCategoria?: number,
+    nombreCategoria?: string
 }

@@ -35,7 +35,7 @@
           <td>{{ producto.precio }}</td>
           <td>{{ producto.stock }}</td>
           <td>{{ producto.createdAt }}</td>
-          <td>{{ producto.idCategoria }}</td>
+          <td>{{ producto.nombreCategoria }}</td>
           <td>
             <i style="color:teal" [routerLink]="['/productos', producto.idProducto]" class="far fa-edit"></i>
             <i style="color: red; margin-left: 5px;" (click)="borrarProducto(producto.idProducto)" class="far fa-trash-alt"></i>
