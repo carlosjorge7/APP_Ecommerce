@@ -41,6 +41,8 @@ export class ProductosFormComponent implements OnInit {
   // Combo
   categorias: Categoria[] = [];
 
+  nombreCategoriaActual: string | undefined = '';
+
   ngOnInit(): void {
     const params = this.activedRoute.snapshot.params;
     this.idProducto = params['idProducto'];
@@ -51,13 +53,20 @@ export class ProductosFormComponent implements OnInit {
         .subscribe(res => {
           this.producto = res;
           this.update = true;
-          console.log(this.producto)
+          console.log(this.producto);
+
+          this.nombreCategoriaActual = this.producto.nombreCategoria;
+          console.log(this.nombreCategoriaActual);
       });
     }
 
     // carga el combo
     this.categoriasService.getCategorias().subscribe((res: Categoria[]) => {
-      this.categorias = res;
+      for(let i = 0; i < res.length; i++) {
+        if(this.nombreCategoriaActual !== res[i]['nombre']){
+          this.categorias.push(res[i]);
+        }
+      }
     });
   }
 
