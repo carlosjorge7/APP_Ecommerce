@@ -33,9 +33,9 @@
                 </div>
                 <div class="form-group">
                     <label for="">Categoria</label>
-                    <select class="form-control" (change)="selectCategoria($event)">
+                    <select name="idCategoria" class="form-control" (change)="selectCategoria($event)" [(ngModel)]="producto.nombreCategoria">
                         <option [defaultSelected]="true" [value]="nombreCategoriaActual">{{nombreCategoriaActual}}</option>
-                        <option [(ngModel)]="producto.idCategoria" name="idCategoria" *ngFor="let categoria of categorias" [value]="categoria.idCategoria">{{categoria.nombre}}</option>
+                        <option name="idCategoria" *ngFor="let categoria of categorias" [value]="categoria.idCategoria">{{categoria.nombre}}</option>
                     </select>
                 </div>
                 <br>
