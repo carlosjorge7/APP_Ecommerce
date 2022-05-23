@@ -95,6 +95,8 @@ export class ProductosFormComponent implements OnInit {
 
     let tipoOperacion: any;
     if(this.update) {
+      // seteamos el id categoria cuando no cambiamos el estado
+      producto.idCategoria = this.producto.idCategoria;
       tipoOperacion = this.productosService.updateProducto(this.idProducto, producto);
     }
     else{
